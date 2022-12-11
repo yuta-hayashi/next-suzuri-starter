@@ -1,11 +1,18 @@
+import Head from 'next/head'
 import { useLoggedinOnlyPage } from '../hooks/useLoggedInOnlyPage'
 
-export default function Admin() {
+export default function Secret() {
   const status = useLoggedinOnlyPage()
-
-  if (status === 'loading') {
-    return 'Loading or not authenticated...'
-  }
-
-  return 'User is logged in'
+  return (
+    <>
+      <Head>
+        <title>Secret Page</title>
+      </Head>
+      {status === 'loading' ? (
+        <p>Loading or not authenticated...</p>
+      ) : (
+        <p>User is logged in.</p>
+      )}
+    </>
+  )
 }
