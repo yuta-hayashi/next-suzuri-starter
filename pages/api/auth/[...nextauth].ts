@@ -5,7 +5,7 @@ export const authOptions = {
   callbacks: {
     async session({ session, token }: { session: any; token: any }) {
       session.user.id = token.id
-      session.access_token = token.accessToken
+      session.accessToken = token.accessToken
       return session
     },
     async jwt({

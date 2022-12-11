@@ -13,5 +13,13 @@ export const useLoggedinOnlyPage = () => {
       })
     },
   })
+
+  if (
+    typeof window !== 'undefined' &&
+    !sessionStorage.getItem('token') &&
+    session?.accessToken
+  ) {
+    sessionStorage.setItem('token', session.accessToken)
+  }
   return { session, status }
 }
