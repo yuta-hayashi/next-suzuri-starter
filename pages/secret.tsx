@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useLoggedinOnlyPage } from '../hooks/useLoggedInOnlyPage'
 
 export default function Secret() {
-  const status = useLoggedinOnlyPage()
+  const { status } = useLoggedinOnlyPage()
   return (
     <>
       <Head>

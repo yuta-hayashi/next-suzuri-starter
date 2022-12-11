@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react'
 import Router from 'next/router'
 
 export const useLoggedinOnlyPage = () => {
-  const { status } = useSession({
+  const { data: session, status } = useSession({
     required: true,
     onUnauthenticated() {
       Router.push({
@@ -13,5 +13,5 @@ export const useLoggedinOnlyPage = () => {
       })
     },
   })
-  return status
+  return { session, status }
 }
