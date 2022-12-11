@@ -1,18 +1,7 @@
-import { useSession } from 'next-auth/react'
-import Router from 'next/router'
+import { useLoggedinOnlyPage } from '../hooks/useLoggedInOnlyPage'
 
 export default function Admin() {
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      Router.push({
-        pathname: '/api/auth/signin',
-        query: {
-          callbackUrl: window.location.href,
-        },
-      })
-    },
-  })
+  const status = useLoggedinOnlyPage()
 
   if (status === 'loading') {
     return 'Loading or not authenticated...'
