@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next SUZURI Starter
 
-## Getting Started
+Next.js, NextAuth.js で SUZURI API の OAuth を使うサンプルプロジェクトのアルファ版です。
 
-First, run the development server:
+## 始め方
+
+まずは `.env.local.example`を`.env.local`というファイル名でコピーし環境変数をそれぞれ設定します。
+`OAUTH_CLIENT_ID`と`OAUTH_CLIENT_SECRET`は[SUZURI Developer ページ](https://suzuri.jp/developer/apps)のアプリケーションページから登録できます。
+`NEXTAUTH_URL`はそのままで、`NEXTAUTH_SECRET`はランダムな文字列を設定してください。
+
+`yarn`を利用してパッケージをインストールし、開発環境を立ち上げます。
 
 ```bash
-npm run dev
-# or
+yarn
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[https://localhost:4000](https://localhost:4000)に開発環境が立ち上がります。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+SUZURI の OAuth を利用するために HTTPS を有効にしています。証明書エラーが発生しますがそのままアクセスしてください。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+現在、以下の３つのサンプルページがあります。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- https://localhost:4000/secret -　ログイン必須のページ
+- https://localhost:4000/try-api - API 取得の例
+- https://localhost:4000/create - Material を登録する例
 
-## Learn More
+## 関連ドキュメント
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs) - Next.js のドキュメント
+- [Learn Next.js](https://nextjs.org/learn) - Next.js を学ぶ
+- [NextAuth.js](https://next-auth.js.org/) - NextAuth.js のドキュメント
+- [SWE](https://swr.vercel.app/ja) - API からの情報取得に使っている SWR のドキュメント
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+GitHub などのリポジトリ経由で Vercel に簡単にデプロイすることができます。
+その他へデプロイする場合は NextAuth.js が`pages/api`を使うことが必須なので SSG で静的ファイルだけではなく、API Routes が使える環境にデプロイしてください。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Next.js deployment documentation](https://nextjs.org/docs/deployment)
